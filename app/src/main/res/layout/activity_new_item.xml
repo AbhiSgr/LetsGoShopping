@@ -33,7 +33,7 @@
 
     <!--button for saving data to room database-->
     <Button
-        android:id="@+id/idBtnSaveItem"
+        android:id="@+id/idSaveItemBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

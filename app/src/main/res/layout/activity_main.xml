@@ -10,13 +10,13 @@
 
     <!--recycler view to display our data-->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVItems"
+        android:id="@+id/idItemsRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <!--fab to add new items-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/idFABAdd"
+        android:id="@+id/idAddFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

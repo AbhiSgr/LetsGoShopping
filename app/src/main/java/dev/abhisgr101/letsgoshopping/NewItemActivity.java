@@ -29,7 +29,7 @@ public class NewItemActivity extends AppCompatActivity {
         itemNameEdt = findViewById(R.id.idEdtItemName);
         itemDescEdt = findViewById(R.id.idEdtItemDescription);
         itemQuantityEdt = findViewById(R.id.idEdtItemQuantity);
-        Button itemBtn = findViewById(R.id.idBtnSaveItem);
+        Button saveItemBtn = findViewById(R.id.idSaveItemBtn);
 
         // below line is to get intent as we
         // are getting data via an intent.
@@ -42,7 +42,7 @@ public class NewItemActivity extends AppCompatActivity {
             itemQuantityEdt.setText(intent.getStringExtra(EXTRA_QUANTITY));
         }
         // adding on click listener for our save button.
-        itemBtn.setOnClickListener(v -> {
+        saveItemBtn.setOnClickListener(v -> {
             // getting text value from edittext and validating if
             // the text fields are empty or not.
             String itemName = itemNameEdt.getText().toString();

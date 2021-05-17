@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
         // initializing our variable for our recycler view and fab.
         // creating a variables for our recycler view.
-        RecyclerView itemsRV = findViewById(R.id.idRVItems);
-        FloatingActionButton fab = findViewById(R.id.idFABAdd);
+        RecyclerView itemsRV = findViewById(R.id.idItemsRV);
+        FloatingActionButton addFAB = findViewById(R.id.idAddFAB);
 
         // adding on click listener for floating action button.
-        fab.setOnClickListener(v -> {
+        addFAB.setOnClickListener(v -> {
             // starting a new activity for adding a new item
             // and passing a constant value in it.
-            Intent intent = new Intent(MainActivity.this, NewItemActivity.class);
+            Intent intent = new Intent(this, NewItemActivity.class);
             startActivityForResult(intent, ADD_ITEM_REQUEST);
         });
 
