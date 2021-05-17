@@ -1,5 +1,6 @@
 package dev.abhisgr101.letsgoshopping;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -123,8 +124,17 @@ public class MainActivity extends AppCompatActivity {
             viewModel.update(model);
             Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
         } else if (requestCode == DELETE_ALL_ITEMS_REQUEST){
-            viewModel.deleteAllItems();
-            Toast.makeText(this, "All items deleted.", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder deleteAllAlertDialogBuilder = new AlertDialog.Builder(this);
+            deleteAllAlertDialogBuilder.setTitle("Confirm");
+            deleteAllAlertDialogBuilder.setMessage("Delete all items from the list?");
+
+            deleteAllAlertDialogBuilder.setPositiveButton("Yes!", (dialog, which) -> {
+                viewModel.deleteAllItems();
+                Toast.makeText(this, "All items deleted.", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            });
+            deleteAllAlertDialogBuilder.setNegativeButton("No!", (dialog, which) -> dialog.dismiss());
+            deleteAllAlertDialogBuilder.create().show();
         } else {
             Toast.makeText(this, "Item not saved", Toast.LENGTH_SHORT).show();
         }
