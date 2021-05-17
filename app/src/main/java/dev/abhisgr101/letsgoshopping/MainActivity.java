@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int ADD_ITEM_REQUEST = 1;
     private static final int EDIT_ITEM_REQUEST = 2;
-    private ViewModal viewmodal;
+    private ViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +48,13 @@ public class MainActivity extends AppCompatActivity {
         // setting adapter class for recycler view.
         itemsRV.setAdapter(adapter);
 
-        // passing a data from view modal.
-        viewmodal = ViewModelProviders.of(this).get(ViewModal.class);
+        // passing a data from view model.
+        viewModel = ViewModelProviders.of(this).get(ViewModel.class);
 
-        // below line is use to get all the items from view modal.
+        // below line is use to get all the items from view model.
         // when the data is changed in our models we are
         // adding that list to our adapter class.
-        viewmodal.getAllItems().observe(this, adapter::submitList);
+        viewModel.getAllItems().observe(this, adapter::submitList);
         // below method is use to add swipe to delete method for item of recycler view.
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 // on recycler view item swiped then we are deleting the item of our recycler view.
-                viewmodal.delete(adapter.getItemAt(viewHolder.getAdapterPosition()));
+                viewModel.delete(adapter.getItemAt(viewHolder.getAdapterPosition()));
                 Toast.makeText(MainActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
             }
         }).
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
             String itemName = data.getStringExtra(NewItemActivity.EXTRA_ITEM_NAME);
             String itemDescription = data.getStringExtra(NewItemActivity.EXTRA_DESCRIPTION);
             String itemQuantity = data.getStringExtra(NewItemActivity.EXTRA_QUANTITY);
-            ItemModal model = new ItemModal(itemName, itemDescription, itemQuantity);
-            viewmodal.insert(model);
+            ItemModel model = new ItemModel(itemName, itemDescription, itemQuantity);
+            viewModel.insert(model);
             Toast.makeText(this, "Item saved", Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_ITEM_REQUEST && resultCode == RESULT_OK) {
             assert data != null;
@@ -109,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
             String itemName = data.getStringExtra(NewItemActivity.EXTRA_ITEM_NAME);
             String itemDesc = data.getStringExtra(NewItemActivity.EXTRA_DESCRIPTION);
             String itemQuantity = data.getStringExtra(NewItemActivity.EXTRA_QUANTITY);
-            ItemModal model = new ItemModal(itemName, itemDesc, itemQuantity);
+            ItemModel model = new ItemModel(itemName, itemDesc, itemQuantity);
             model.setId(id);
-            viewmodal.update(model);
+            viewModel.update(model);
             Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Item not saved", Toast.LENGTH_SHORT).show();

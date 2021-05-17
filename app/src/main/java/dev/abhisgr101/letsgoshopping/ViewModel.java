@@ -8,34 +8,34 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-public class ViewModal extends AndroidViewModel {
+public class ViewModel extends AndroidViewModel {
 
     // creating a new variable for item repository.
     private final ItemRepository repository;
 
     // below line is to create a variable for live
     // data where all the items are present.
-    private final LiveData<List<ItemModal>> allItems;
+    private final LiveData<List<ItemModel>> allItems;
 
-    // constructor for our view modal.
-    public ViewModal(@NonNull Application application) {
+    // constructor for our view model.
+    public ViewModel(@NonNull Application application) {
         super(application);
         repository = new ItemRepository(application);
         allItems = repository.getAllItems();
     }
 
     // below method is use to insert the data to our repository.
-    public void insert(ItemModal model) {
+    public void insert(ItemModel model) {
         repository.insert(model);
     }
 
     // below line is to update data in our repository.
-    public void update(ItemModal model) {
+    public void update(ItemModel model) {
         repository.update(model);
     }
 
     // below line is to delete the data in our repository.
-    public void delete(ItemModal model) {
+    public void delete(ItemModel model) {
         repository.delete(model);
     }
 
@@ -45,7 +45,7 @@ public class ViewModal extends AndroidViewModel {
     }
 
     // below method is to get all the items in our list.
-    public LiveData<List<ItemModal>> getAllItems() {
+    public LiveData<List<ItemModel>> getAllItems() {
         return allItems;
     }
 }

@@ -16,17 +16,17 @@ public interface DAO {
     // below method is use to
     // add data to database.
     @Insert
-    void insert(ItemModal model);
+    void insert(ItemModel model);
 
     // below method is use to update
     // the data in our database.
     @Update
-    void update(ItemModal model);
+    void update(ItemModel model);
 
     // below line is use to delete a
     // specific item in our database.
     @Delete
-    void delete(ItemModal model);
+    void delete(ItemModel model);
 
     // on below line we are making query to
     // delete all items from our database.
@@ -37,5 +37,5 @@ public interface DAO {
     // in this we are ordering our items in ascending order
     // with our item name.
     @Query("SELECT * FROM item_table ORDER BY itemName ASC")
-    LiveData<List<ItemModal>> getAllItems();
+    LiveData<List<ItemModel>> getAllItems();
 }

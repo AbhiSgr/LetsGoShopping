@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 // below line is for setting table name.
 @Entity(tableName = "item_table")
-public class ItemModal {
+public class ItemModel {
 
     // below line is to auto increment
     // id for each item.
@@ -29,7 +29,7 @@ public class ItemModal {
     // below line we are creating constructor class.
     // inside constructor class we are not passing
     // our id because it is incrementing automatically
-    public ItemModal(String itemName, String itemDescription, String itemQuantity) {
+    public ItemModel(String itemName, String itemDescription, String itemQuantity) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemQuantity = itemQuantity;
