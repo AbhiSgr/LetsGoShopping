@@ -22,10 +22,23 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="18dp"
         android:src="@android:drawable/ic_input_add"
         app:tint="@color/white" />
 
+    <!--fab to trash all items-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/idDeleteAllFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/idAddFAB"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="9dp"
+        android:src="@drawable/ic_baseline_delete_sweep_24"
+        app:tint="@color/white" />
 </RelativeLayout>

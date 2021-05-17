@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int ADD_ITEM_REQUEST = 1;
     private static final int EDIT_ITEM_REQUEST = 2;
+    private static final int DELETE_ALL_ITEMS_REQUEST = 3;
     private ViewModel viewModel;
 
     @Override
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // creating a variables for our recycler view.
         RecyclerView itemsRV = findViewById(R.id.idItemsRV);
         FloatingActionButton addFAB = findViewById(R.id.idAddFAB);
+        FloatingActionButton deleteAllFAB = findViewById(R.id.idDeleteAllFAB);
 
         // adding on click listener for floating action button.
         addFAB.setOnClickListener(v -> {
@@ -36,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             // and passing a constant value in it.
             Intent intent = new Intent(this, NewItemActivity.class);
             startActivityForResult(intent, ADD_ITEM_REQUEST);
+        });
+
+        // adding on click listener for floating action button.
+        deleteAllFAB.setOnClickListener(v -> {
+            // starting a new activity for adding a new item
+            // and passing a constant value in it.
+            startActivityForResult(getIntent(), DELETE_ALL_ITEMS_REQUEST);
         });
 
         // setting layout manager to our adapter class.
@@ -113,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
             model.setId(id);
             viewModel.update(model);
             Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == DELETE_ALL_ITEMS_REQUEST){
+            viewModel.deleteAllItems();
+            Toast.makeText(this, "All items deleted.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Item not saved", Toast.LENGTH_SHORT).show();
         }
